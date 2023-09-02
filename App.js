@@ -1,11 +1,18 @@
-import * as React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import * as Speech from 'expo-speech';
+import * as React from "react";
+import { View, StyleSheet, Button } from "react-native";
+import * as Speech from "expo-speech";
 
 export default function App() {
   const speak = () => {
-    const thingToSay = '1';
-    Speech.speak(thingToSay);
+    const thingToSay = "1";
+    Speech.speak(thingToSay, {
+      onStart: () => {
+        alert("started");
+      },
+      onDone: () => {
+        alert("completed");
+      },
+    });
   };
 
   return (
@@ -18,8 +25,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
+    justifyContent: "center",
+    backgroundColor: "#ecf0f1",
     padding: 8,
   },
 });
